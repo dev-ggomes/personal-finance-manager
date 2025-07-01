@@ -1,7 +1,7 @@
 import pytest
-from src.db import engine, Session
-from src.models import Base, Transaction
-from src.utils import add_transaction, get_transactions, update_transaction, delete_transaction
+from db import engine, Session
+from models import Base, Transaction
+from utils import add_transaction, get_transactions, update_transaction, delete_transaction
 from datetime import date
 
 @pytest.fixture(scope='module')
