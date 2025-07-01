@@ -1,31 +1,46 @@
-<!DOCTYPE html>
-<html lang="pt-PT">
+<!doctype html>
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GG | Dashboard Financeiro</title>
+  <meta charset="utf-8">
+  <title>GG | Dashboard Financeiro</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
-    <h1>As minhas transações</h1>
+  <div class="container">
+    <h1>Minhas Transações</h1>
     <nav>
-        <a href="{{ url_for('dashboard.index') }}">Início</a> |
-        <a href="{{ url_for('dashboard.report') }}">Relatório Mensal</a>
+      <a href="{{ url_for('dashboard.index') }}">Início</a> |
+      <a href="{{ url_for('dashboard.report') }}">Relatório Mensal</a>
     </nav>
-    <form method="post">
-        <input type="date" name="date" required />
-        <select name="type">
-            <option value="income">Receita</option>
-            <option value="expense">Despesa</option>
-        </select>
-        <input type="text" name="category" placeholder="Categoria" required />
-        <input type="number" step="0.01" name="amount" placeholder="Valor" required />
-        <input type="text" name="description" placeholder="Descrição" required />
-        <button type="submit">Adicionar</button>
+    <form method="post" class="g-2 mb-4">
+      <input type="date" name="date" required />
+      <select name="type">
+        <option value="income">Receita</option>
+        <option value="expense">Despesa</option>
+      </select>
+      <input type="text" name="category" placeholder="Categoria" required />
+      <input type="number" step="0.01" name="amount" placeholder="Valor" required />
+      <input type="text" name="description" placeholder="Descrição" />
+      <button type="submit" class="btn-custom">Adicionar</button>
     </form>
-    <ul>
+    <table class="table-custom">
+      <thead>
+        <tr>
+          <th>Data</th><th>Categoria</th><th>Tipo</th><th>Valor</th><th>Desc.</th>
+        </tr>
+      </thead>
+      <tbody>
         {% for txn in transactions %}
-            <li>{{ txn.date }} - {{ txn.category }} - {{ txn.type }} - {{ txn.amount }}€ - {{ txn.description }}</li>
+          <tr>
+            <td>{{ txn.date }}</td>
+            <td>{{ txn.category }}</td>
+            <td>{{ txn.type }}</td>
+            <td>{{ txn.amount }}€</td>
+            <td>{{ txn.description }}</td>
+          </tr>
         {% endfor %}
-    </ul>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>
