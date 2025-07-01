@@ -19,7 +19,7 @@ def get_transactions(session: SessionType, start_date=None, end_date=None, categ
         query = query.fileter(Transaction.categoty == category)
     return query.order_by(Transaction.date.desc()).all()
 
-def update_transactions(session: SessionType, txn_id: int, **kwargs) -> Transaction:
+def update_transaction(session: SessionType, txn_id: int, **kwargs) -> Transaction:
     txn = session.query(Transaction).get(txn_id)
     if not txn:
         return None
@@ -28,7 +28,7 @@ def update_transactions(session: SessionType, txn_id: int, **kwargs) -> Transact
     session.commit()
     return txn
 
-def detele_transaction(session: SessionType, txn_id: int) -> bool:
+def delete_transaction(session: SessionType, txn_id: int) -> bool:
     txn = session.query(Transaction).get(txn_id)
     if not txn:
         return False
