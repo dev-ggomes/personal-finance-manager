@@ -46,10 +46,8 @@ def delete_transaction(session: SessionType, txn_id: int) -> bool:
     return True
 
 def get_monthly_report(session):
-    # 1) Vai buscar todas as transações
+    # carrega todas as transações para um DataFrame
     txns = session.query(Transaction).all()
-
-    # 2) Converte para DataFrame
     df = pd.DataFrame([{
         'date': t.date,
         'type': t.type,
@@ -57,27 +55,23 @@ def get_monthly_report(session):
     } for t in txns])
     if df.empty:
         return None
-    
-    # 3) Extrai ano-mês e agrupa
-    df['yeart_month'] = df['date'].apply(lambda d: d.strftime('%Y-%m'))
-    grouped = df.pivot_table(
-        index='year_month',
-        columns='type',
-        values='amount',
-        aggfunc='sum',
-        fill_value=0
+
+    # agrupa por ano-mês e tipo
+    df['year_month'] = df['date'].dt.to_period('M').astype(str)
+    pivot = df.pivot_table(
+        index='year_month', columns='type', values='amount',
+        aggfunc='sum', fill_value=0
     )
 
-    # 4) Gera gráfico de barras
+    # desenha o gráfico
     fig, ax = plt.subplots()
-    grouped.plt(kind='bar', ax=ax)
+    pivot.plot(kind='bar', ax=ax)
     ax.set_title('Receitas vs Despesas por Mês')
-    ax.set_ylabel('Valor (€)')
-    ax.legend(title='Tipo')
-
-    # 5) Converte figura para PNG embutido (base64)
-    buf = io.BytesIO()
+    ax.set_ylabel('€')
     fig.tight_layout()
+
+    # converte a figura para base64
+    buf = io.BytesIO()
     fig.savefig(buf, format='png')
     buf.seek(0)
     img_b64 = base64.b64encode(buf.read()).decode('ascii')
