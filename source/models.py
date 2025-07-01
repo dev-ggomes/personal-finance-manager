@@ -19,3 +19,11 @@ class Transaction(Base):
     amount = Column(Float, nullable=False)
     description = Column(String)
     category = relationship('Category', back_populates='transactions')
+
+class Budget(Base):
+    __tablename__ = 'budgets'
+    id = Column(Integer, primary_key=True)
+    category_id = Column(Integer, ForeignKey('categories.id'), nullable=False)
+    year_month = Column(String, nullable=False)  # ex. '2025-07'
+    limit = Column(Float, nullable=False)
+    category = relationship('Category')
