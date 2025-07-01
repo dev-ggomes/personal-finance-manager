@@ -7,6 +7,10 @@
 </head>
 <body>
     <h1>As minhas transações</h1>
+    <nav>
+        <a href="{{ url_for('dashboard.index') }}">Início</a> |
+        <a href="{{ url_for('dashboard.report') }}">Relatório Mensal</a>
+    </nav>
     <form method="post">
         <input type="date" name="date" required />
         <select name="type">
