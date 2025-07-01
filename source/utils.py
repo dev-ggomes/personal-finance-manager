@@ -56,11 +56,16 @@ def get_monthly_report(session):
     if df.empty:
         return None
 
+    df['date'] = pd.to_datetime(df['date'])
+
     # agrupa por ano-mês e tipo
     df['year_month'] = df['date'].dt.to_period('M').astype(str)
     pivot = df.pivot_table(
-        index='year_month', columns='type', values='amount',
-        aggfunc='sum', fill_value=0
+        index='year_month', 
+        columns='type', 
+        values='amount',
+        aggfunc='sum', 
+        fill_value=0
     )
 
     # desenha o gráfico
