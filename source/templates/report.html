@@ -6,14 +6,27 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
+    <header class="container">
+        <div class="logo">
+            Finance Manager
+        </div>
+        <nav>
+            <a href="{{ url_for('dashboard.index') }}">Início</a>
+            <a href="{{ url_for('dashboard.report') }}">Relatório</a>
+        </nav>
+    </header>
   <div class="container">
     <h1>Relatório Mensal</h1>
-    {% if chart_data %}
-      <img src="data:image/png;base64,{{ chart_data }}" alt="Gráfico mensal" />
-    {% else %}
-      <p>Ainda não há transações para gerar relatório.</p>
-    {% endif %}
-    <p><a href="{{ url_for('dashboard.index') }}">← Voltar</a></p>
+    <div class="chart-card">
+        {% if chart_data %}
+        <img src="data:image/png;base64,{{ chart_data }}" alt="Gráfico mensal" />
+        {% else %}
+        <p>Ainda não há transações para gerar relatório.</p>
+        {% endif %}
+    </div>
   </div>
+  <footer class="container">
+    &copy; 2025 teu-usuario • Projeto Open Source
+</footer>
 </body>
 </html>

@@ -7,12 +7,15 @@
 </head>
 <body>
     <header class="container">
-    <div class="logo">Finance Manager</div>
-    <nav>
-      <a href="{{ url_for('dashboard.index') }}">Início</a>
-      <a href="{{ url_for('dashboard.report') }}">Relatório</a>
-    </nav>
-  </header>
+        <div class="logo">
+            Finance Manager
+        </div>
+        <nav>
+            <a href="{{ url_for('dashboard.index') }}">Início</a>
+            <a href="{{ url_for('dashboard.report') }}">Relatório</a>
+        </nav>
+    </header>
+
   <div class="container">
     <h1>Minhas Transações</h1>
     <nav>
@@ -30,7 +33,7 @@
       <input type="text" name="description" placeholder="Descrição" />
       <button type="submit" class="btn-custom">Adicionar</button>
     </form>
-    <table class="table-card">
+    <table class="table-custom table-card">
       <thead>
         <tr>
           <th>Data</th><th>Categoria</th><th>Tipo</th><th>Valor</th><th>Desc.</th>
