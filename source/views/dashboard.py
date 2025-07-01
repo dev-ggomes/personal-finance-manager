@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from src.db import Session
-from src.utils import add_transaction, get_transactions
+from source.db import Session
+from source.utils import add_transaction, get_transactions
 from datetime import datetime
 
 bp = Blueprint('dashboard', __name__)
