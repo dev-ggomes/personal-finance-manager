@@ -1,0 +1,47 @@
+// Variáveis
+$primary-color: #0d6efd;
+$bg-color: #f8f9fa;
+$text-color: #212529;
+$table-hover: #f1f1f1;
+
+// Estilos Globais
+body {
+    background-color: $bg-color;
+    color: $text-color;
+    font-family: 'Gill Sans MT';
+    margin: 0;
+    padding: 1rem;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+// Botão customizado
+.btn-custom {
+    background-color: $primary-color;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.9;
+    }
+}
+
+// Tabela estilizada
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    th, td {
+        border: 1px solid #dee2e6;
+        padding: 0.75rem;
+        text-align: left;
+    }
+    tbody tr:nth-child(even) {
+        background-color: $table-hover;
+    }
+}
