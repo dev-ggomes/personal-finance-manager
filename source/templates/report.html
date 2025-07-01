@@ -1,20 +1,19 @@
 <!doctype html>
-<html lang="pt-PT">
+<html lang="pt">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <title>GG | Relatório Mensal</title>
+  <meta charset="utf-8">
+  <title>GG | Relatório Mensal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
+  <div class="container">
     <h1>Relatório Mensal</h1>
     {% if chart_data %}
-    <img src="data:image/png;base64,{{ chart_data }}" alt="Gráfico mensal">
+      <img src="data:image/png;base64,{{ chart_data }}" alt="Gráfico mensal" />
     {% else %}
-    <p>Ainda não há transações para gerar relatório.</p>
+      <p>Ainda não há transações para gerar relatório.</p>
     {% endif %}
-    <p>
-        <a href="{{ url_for('dashboard.index') }}">← Voltar</a>
-    </p>
+    <p><a href="{{ url_for('dashboard.index') }}">← Voltar</a></p>
+  </div>
 </body>
 </html>
