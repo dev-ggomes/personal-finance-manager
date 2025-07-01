@@ -96,6 +96,27 @@ header nav a:hover {
 .transaction-form button:hover {
   filter: brightness(1.2); }
 
+.transaction-form select {
+  appearance: none;
+  /* remove o estilo nativo */
+  background: var(--card-bg) url("data:image/svg+xml;utf8,<svg fill='%23e259ff' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>") no-repeat right 0.75rem center;
+  /* seta lilás à direita */
+  background-size: 1rem;
+  padding: 0.75rem 2rem 0.75rem 0.75rem;
+  /* espaço para a seta */
+  border: 1px solid var(--shadow-color);
+  border-radius: 6px;
+  color: var(--text-color);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  cursor: pointer; }
+
+.transaction-form select:hover,
+.transaction-form select:focus {
+  border-color: var(--primary);
+  /* lilás forte ao focar/hover */
+  box-shadow: 0 0 6px var(--primary);
+  outline: none; }
+
 .table-card {
   background: var(--card-bg);
   border-radius: 12px;
@@ -152,7 +173,6 @@ footer {
   border: none;
   color: var(--secondary);
   font-size: 1.25rem;
-  /* ajusta o tamanho do ícone */
   cursor: pointer;
   transition: color 0.3s, transform 0.2s;
   padding: 0.25rem;
@@ -160,9 +180,7 @@ footer {
 
 .btn-delete:hover {
   color: #000;
-  /* preto */
-  transform: scale(1.2);
-  /* zoom suave */ }
+  transform: scale(1.2); }
 
 .btn-submit {
   transition: filter 0.3s, transform 0.2s; }

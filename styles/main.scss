@@ -111,12 +111,12 @@ header nav a:hover {
 
 // Custom select (dropbox) styling
 .transaction-form select {
-  appearance: none;                       /* remove o estilo nativo */
+  appearance: none;
   background: var(--card-bg)
     url("data:image/svg+xml;utf8,<svg fill='%23e259ff' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>")
-    no-repeat right 0.75rem center;     /* seta lilás à direita */
+    no-repeat right 0.75rem center;
   background-size: 1rem;
-  padding: 0.75rem 2rem 0.75rem 0.75rem;  /* espaço para a seta */
+  padding: 0.75rem 2rem 0.75rem 0.75rem;
   border: 1px solid var(--shadow-color);
   border-radius: 6px;
   color: var(--text-color);
@@ -126,11 +126,10 @@ header nav a:hover {
 
 .transaction-form select:hover,
 .transaction-form select:focus {
-  border-color: var(--primary);          /* lilás forte ao focar/hover */
+  border-color: var(--primary);
   box-shadow: 0 0 6px var(--primary);
   outline: none;
 }
-
 
 // Table
 .table-card {
