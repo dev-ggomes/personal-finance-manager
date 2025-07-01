@@ -159,8 +159,8 @@ footer {
   border-radius: 4px; }
 
 .btn-delete:hover {
-  color: var(--primary);
-  /* lilás */
+  color: #000;
+  /* preto */
   transform: scale(1.2);
   /* zoom suave */ }
 

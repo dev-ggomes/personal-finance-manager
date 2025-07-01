@@ -162,15 +162,15 @@ footer {
   background: transparent;
   border: none;
   color: var(--secondary);
-  font-size: 1.25rem;      /* ajusta o tamanho do ícone */
+  font-size: 1.25rem;
   cursor: pointer;
   transition: color 0.3s, transform 0.2s;
   padding: 0.25rem;
   border-radius: 4px;
 }
 .btn-delete:hover {
-  color: #000;    /* preto */
-  transform: scale(1.2);     /* zoom suave */
+  color: #000;
+  transform: scale(1.2);
 }
 
 .btn-submit {
