@@ -48,7 +48,7 @@
           {% for txn in transactions %}
           <tr>
             <td>{{ txn.date }}</td>
-            <td>{{ txn.category }}</td>
+            <td>{{ txn.category.name }}</td>
             <td>{{ txn.type }}</td>
             <td>{{ txn.amount }}€</td>
             <td>
