@@ -156,3 +156,27 @@ footer {
   font-size: 0.9rem;
   color: var(--secondary);
 }
+
+// Delete button
+.btn-delete {
+  background: transparent;
+  border: none;
+  color: var(--secondary);
+  font-size: 1.25rem;      /* ajusta o tamanho do ícone */
+  cursor: pointer;
+  transition: color 0.3s, transform 0.2s;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+.btn-delete:hover {
+  color: var(--primary);    /* lilás */
+  transform: scale(1.2);     /* zoom suave */
+}
+
+.btn-submit {
+  transition: filter 0.3s, transform 0.2s;
+}
+.btn-submit:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
