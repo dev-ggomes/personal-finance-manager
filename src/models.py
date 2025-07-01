@@ -4,10 +4,10 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 class Transaction(Base):
-    __tablename__ = "transactions"
+    __tablename__ = 'transactions'
     id = Column(Integer, primary_key=True)
     date = Column(Date, nullable=False)
-    type = Column(String, nullable=False)           # 'income' ou 'expense'
+    type = Column(String, nullable=False)      # 'income' ou 'expense'
     category = Column(String, nullable=False)
     amount = Column(Float, nullable=False)
     description = Column(String)
