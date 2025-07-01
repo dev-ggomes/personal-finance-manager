@@ -24,6 +24,6 @@ class Budget(Base):
     __tablename__ = 'budgets'
     id = Column(Integer, primary_key=True)
     category_id = Column(Integer, ForeignKey('categories.id'), nullable=False)
-    year_month = Column(String, nullable=False)  # ex. '2025-07'
+    year_month = Column(String, nullable=False) 
     limit = Column(Float, nullable=False)
     category = relationship('Category')
