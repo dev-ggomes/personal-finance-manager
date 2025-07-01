@@ -14,8 +14,8 @@ class Transaction(Base):
     __tablename__ = 'transactions'
     id = Column(Integer, primary_key=True)
     date = Column(Date, nullable=False)
-    type = Column(String, nullable=False)      # 'income' ou 'expense'
-    category = Column(String, nullable=False)
+    type = Column(String, nullable=False)
+    category_id = Column(Integer, ForeignKey('categories.id'), nullable=False)
     amount = Column(Float, nullable=False)
     description = Column(String)
     category = relationship('Category', back_populates='transactions')
