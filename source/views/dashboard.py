@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from source.db import Session
-from source.utils import add_transaction, get_transactions, get_monthly_report
+from source.utils import add_transaction, get_transactions, delete_transaction, get_monthly_report
 from datetime import datetime
 
 bp = Blueprint('dashboard', __name__)
@@ -23,6 +23,12 @@ def index():
 
     txns = get_transactions(session)
     return render_template('dashboard.html', transactions=txns)
+
+@bp.route('/delete/<int:txn_id>', methods=['POST'])
+def delete(txn_id):
+    session = Session()
+    delete_transaction(session, txn_id)
+    return redirect(url_for('dashboard.index'))
 
 @bp.route('/report')
 def report():
