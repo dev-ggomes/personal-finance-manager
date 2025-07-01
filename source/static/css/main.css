@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --bg-color: #2e2e2e;
   --card-bg: #3a3a3a;
@@ -145,3 +146,27 @@ footer {
   margin-top: 2rem;
   font-size: 0.9rem;
   color: var(--secondary); }
+
+.btn-delete {
+  background: transparent;
+  border: none;
+  color: var(--secondary);
+  font-size: 1.25rem;
+  /* ajusta o tamanho do ícone */
+  cursor: pointer;
+  transition: color 0.3s, transform 0.2s;
+  padding: 0.25rem;
+  border-radius: 4px; }
+
+.btn-delete:hover {
+  color: var(--primary);
+  /* lilás */
+  transform: scale(1.2);
+  /* zoom suave */ }
+
+.btn-submit {
+  transition: filter 0.3s, transform 0.2s; }
+
+.btn-submit:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px); }
