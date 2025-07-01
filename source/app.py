@@ -3,20 +3,23 @@ from source.assets import init_assets
 from source.db import engine
 from source.models import Base
 
-# Cria e configura a app
-
+# Create and configure the Flask app
 def create_app():
     app = Flask(__name__, template_folder='templates', static_folder='static')
 
-    # Inicializa assets (SCSS -> CSS)
+    # Compile SCSS assets
     init_assets(app)
 
-    # Garante que o DB existe
+    # Initialize database schema
     Base.metadata.create_all(engine)
 
-    # Regista blueprints
+    # Register Blueprints
     from source.views.dashboard import bp as dashboard_bp
+    from source.views.categories import bp as categories_bp
+    from source.views.budgets import bp as budgets_bp
     app.register_blueprint(dashboard_bp)
+    app.register_blueprint(categories_bp)
+    app.register_blueprint(budgets_bp)
 
     return app
 
