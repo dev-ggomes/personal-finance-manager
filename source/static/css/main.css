@@ -1,135 +1,106 @@
 :root {
-  --bg-primary: rgba(255, 255, 255, 0.1);
-  --bg-secondary: rgba(255, 255, 255, 0.05);
-  --accent-color: #00e5ff;
-  --text-color: #e0e0e0;
-  --shadow-color: rgba(0, 229, 255, 0.4);
-  --neon-glow: #00e5ff; }
+  --bg-color: #f5f7fa;
+  --card-bg: #ffffff;
+  --primary: #a8dadc;
+  --secondary: #457b9d;
+  --accent: #f4a261;
+  --text-color: #333333;
+  --shadow-color: rgba(0, 0, 0, 0.05); }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0; }
 
-@keyframes glow {
-  0%,
-  100% {
-    text-shadow: 0 0 5px var(--neon-glow), 0 0 10px var(--neon-glow); }
-  50% {
-    text-shadow: 0 0 20px var(--neon-glow), 0 0 30px var(--neon-glow); } }
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px); }
-  to {
-    opacity: 1;
-    transform: translateY(0); } }
-
 body {
-  background: #0d0d0d;
+  background: var(--bg-color);
   color: var(--text-color);
-  font-family: 'Orbitron', sans-serif;
-  min-height: 100vh;
-  animation: fadeInUp 0.8s ease-out; }
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  transition: background 0.3s; }
 
 .container {
-  max-width: 1024px;
-  margin: auto;
-  padding: 2rem;
-  animation: fadeInUp 0.6s ease-out; }
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem; }
 
 header {
-  background: var(--bg-primary);
-  backdrop-filter: blur(10px);
+  background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 0 20px var(--shadow-color);
-  padding: 1rem 2rem;
+  box-shadow: 0 4px 8px var(--shadow-color);
+  padding: 1.5rem;
+  transition: box-shadow 0.3s, transform 0.3s;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  background: var(--primary);
+  color: #fff; }
+  header:hover {
+    box-shadow: 0 8px 16px var(--shadow-color);
+    transform: translateY(-4px); }
 
 header .logo {
-  font-size: 2rem;
-  color: var(--accent-color);
-  animation: glow 2s infinite ease-in-out; }
+  font-size: 1.8rem;
+  font-weight: bold; }
 
 header nav a {
-  margin-left: 1.5rem;
-  position: relative;
-  color: var(--text-color);
+  margin-left: 1rem;
+  color: #fff;
   text-decoration: none;
-  transition: color .3s; }
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: background 0.3s; }
 
 header nav a:hover {
-  color: var(--accent-color); }
-
-header nav a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  background: var(--accent-color);
-  transition: width .3s; }
-
-header nav a:hover::after {
-  width: 100%; }
+  background: var(--secondary); }
 
 .transaction-form {
-  background: var(--bg-secondary);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px var(--shadow-color);
   padding: 1.5rem;
-  transition: transform .3s, box-shadow .3s;
+  transition: box-shadow 0.3s, transform 0.3s;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
-  margin-bottom: 2rem; }
+  margin: 2rem 0; }
   .transaction-form:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 40px var(--shadow-color); }
+    box-shadow: 0 8px 16px var(--shadow-color);
+    transform: translateY(-4px); }
 
 .transaction-form input,
 .transaction-form select,
 .transaction-form button {
-  background: transparent;
-  border: 1px solid var(--text-color);
-  color: var(--text-color);
-  padding: .75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--shadow-color);
   border-radius: 6px;
-  font-family: inherit; }
+  font-size: 1rem; }
 
 .transaction-form input:focus,
 .transaction-form select:focus {
   outline: none;
-  border-color: var(--accent-color); }
+  border-color: var(--secondary); }
 
 .transaction-form button {
-  background: var(--accent-color);
-  color: #000;
+  background: var(--accent);
+  color: #fff;
+  border: none;
   cursor: pointer;
-  font-weight: bold;
-  transition: filter .3s; }
+  transition: filter 0.3s; }
 
 .transaction-form button:hover {
   filter: brightness(1.1); }
 
 .table-card {
-  background: var(--bg-secondary);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px var(--shadow-color);
   padding: 1.5rem;
-  transition: transform .3s, box-shadow .3s;
-  overflow-x: auto;
-  margin-bottom: 2rem; }
+  transition: box-shadow 0.3s, transform 0.3s;
+  overflow-x: auto; }
   .table-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 40px var(--shadow-color); }
+    box-shadow: 0 8px 16px var(--shadow-color);
+    transform: translateY(-4px); }
 
 .table-card table {
   width: 100%;
@@ -137,39 +108,36 @@ header nav a:hover::after {
 
 .table-card th,
 .table-card td {
-  padding: .75rem;
-  text-align: left; }
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--shadow-color); }
 
-.table-card thead th {
-  background: #001219;
-  color: var(--accent-color); }
+.table-card thead {
+  background: var(--secondary);
+  color: #fff; }
 
 .table-card tbody tr:hover {
-  background: rgba(0, 229, 255, 0.1); }
+  background: var(--primary);
+  color: #fff; }
 
 .chart-card {
-  background: var(--bg-secondary);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px var(--shadow-color);
   padding: 1.5rem;
-  transition: transform .3s, box-shadow .3s;
+  transition: box-shadow 0.3s, transform 0.3s;
   text-align: center;
-  margin-bottom: 2rem; }
+  margin: 2rem 0; }
   .chart-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 40px var(--shadow-color); }
+    box-shadow: 0 8px 16px var(--shadow-color);
+    transform: translateY(-4px); }
 
 .chart-card img {
   max-width: 100%;
-  border-radius: 6px;
-  animation: fadeInUp .8s ease; }
+  border-radius: 8px; }
 
 footer {
   text-align: center;
-  padding: 1rem;
-  color: var(--text-color);
-  opacity: .7;
-  font-size: .8rem;
-  animation: fadeInUp .5s ease; }
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--secondary); }

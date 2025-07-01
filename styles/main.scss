@@ -100,11 +100,11 @@ header nav a:hover {
   color: #fff;
   border: none;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: filter 0.3s;
 }
 
 .transaction-form button:hover {
-  background: darken(var(--accent), 5%);
+  filter: brightness(1.1);
 }
 
 // Table
