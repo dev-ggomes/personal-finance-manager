@@ -1,136 +1,192 @@
-// Variáveis de tema
-$primary:    #005f73;
-$secondary:  #0a9396;
-$accent:     #94d2bd;
-$background: #f7f7f7;
-$text:       #264653;
-$dark:       #001219;
-
-$font-base:     'Helvetica Neue', Arial, sans-serif;
-$font-heading:  'Segoe UI', Tahoma, sans-serif;
-
-// Mixin para cartões
-@mixin card {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  padding: 1.5rem;
+:root {
+  --bg-primary: rgba(255, 255, 255, 0.1);
+  --bg-secondary: rgba(255, 255, 255, 0.05);
+  --accent-color: #00e5ff;
+  --text-color: #e0e0e0;
+  --shadow-color: rgba(0, 229, 255, 0.4);
+  --neon-glow: #00e5ff;
 }
 
-// Reset básico
-* {
-  box-sizing: border-box;
+// Reset
+* { 
+    box-sizing: border-box; 
+    margin:0; 
+    padding:0; 
 }
+
+@keyframes glow { 
+    0%,
+
+    100% { 
+        text-shadow:0 0 5px var(--neon-glow),
+        0 0 10px var(--neon-glow);
+     } 
+     50% { 
+        text-shadow:0 0 20px var(--neon-glow),
+        0 0 30px var(--neon-glow);
+    } 
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity:0;
+        transform:translateY(20px);
+    } to{
+        opacity:1;
+        transform:translateY(0);
+    } 
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  background: $background;
-  color: $text;
-  font-family: $font-base;
-  line-height: 1.6;
+  background: #0d0d0d;
+  color: var(--text-color);
+  font-family: 'Orbitron', sans-serif;
+  min-height: 100vh;
+  animation: fadeInUp 0.8s ease-out;
 }
 
-// Container centralizado
-.container {
-  max-width: 960px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+.container { 
+    max-width:1024px; 
+    margin:auto; 
+    padding:2rem; 
+    animation: fadeInUp 0.6s ease-out; 
 }
 
-// Header com navegação
 header {
-  @include card;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: $primary;
-  color: #fff;
-  margin-bottom: 2rem;
-
-  .logo {
-    font-family: $font-heading;
-    font-size: 1.75rem;
-  }
-
-  nav a {
-    color: #fff;
-    margin-left: 1.5rem;
-    text-decoration: none;
-    font-weight: 500;
-    transition: opacity .2s;
-    &:hover { opacity: 0.8; }
-  }
+  background: var(--bg-primary);
+  backdrop-filter: blur(10px);
+  border-radius:12px;
+  box-shadow:0 0 20px var(--shadow-color);
+  padding:1rem 2rem;
+  display:flex;justify-content:space-between;align-items:center;
 }
 
-// Formulário em cartão
-.transaction-form {
-  @include card;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-
-  input, select, button {
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 1px solid lighten($dark, 40%);
-    border-radius: 4px;
-  }
-
-  button {
-    background: $secondary;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    transition: opacity .2s;
-    &:hover { opacity: 0.9; }
-  }
+header .logo { 
+    font-size:2rem;
+    color:var(--accent-color);
+    animation:glow 2s infinite ease-in-out; 
 }
 
-// Tabela dentro de cartão
-.table-card {
-  @include card;
-  overflow-x: auto;
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-
-    thead {
-      background: $dark;
-      color: #fff;
-      th {
-        padding: 0.75rem;
-        text-align: left;
-      }
-    }
-
-    tbody {
-      tr {
-        border-bottom: 1px solid lighten($dark, 50%);
-        &:nth-child(even) { background: lighten($background, 5%); }
-        td { padding: 0.75rem; }
-      }
-    }
-  }
+header nav a {
+  margin-left:1.5rem;
+  position:relative;
+  color:var(--text-color);
+  text-decoration:none;
+  transition:color .3s;
 }
 
-// Gráfico dentro de cartão
-.chart-card {
-  @include card;
-  text-align: center;
-  margin-bottom: 2rem;
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+header nav a:hover { 
+    color:var(--accent-color); 
 }
 
-// Footer simples
-footer {
-  text-align: center;
-  margin-top: 2rem;
-  color: lighten($dark, 40%);
-  font-size: 0.9rem;
+header nav a::after { 
+    content:'';
+    position:absolute;
+    width:0;
+    height:2px;
+    bottom:-4px;
+    background:var(--accent-color);
+    transition:width .3s; 
+}
+
+header nav a:hover::after { 
+    width:100%; 
+}
+
+// Glass cards
+@mixin glass { 
+    background:var(--bg-secondary);
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:10px;
+    box-shadow:0 4px 30px rgba(0,0,0,0.5);
+    padding:1.5rem;
+    transition:transform .3s, box-shadow .3s;
+    &:hover{
+        transform:translateY(-8px);
+        box-shadow:0 8px 40px var(--shadow-color);
+    } 
+}
+
+.transaction-form { 
+    @include glass; 
+    display:grid; 
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1rem;margin-bottom:2rem; 
+}
+
+.transaction-form input,
+.transaction-form select,
+.transaction-form button { 
+    background:transparent;
+    border:1px solid var(--text-color);
+    color:var(--text-color);
+    padding:.75rem;
+    border-radius:6px;
+    font-family:inherit; 
+}
+
+.transaction-form input:focus,
+.transaction-form select:focus { 
+    outline:none;
+    border-color:var(--accent-color); 
+}
+
+.transaction-form button { 
+    background:var(--accent-color);
+    color:#000;
+    cursor:pointer;
+    font-weight:bold;
+    transition:filter .3s; 
+}
+
+.transaction-form button:hover { 
+    filter: brightness(1.1); 
+}
+
+.table-card { 
+    @include glass; 
+    overflow-x:auto;
+    margin-bottom:2rem; 
+}
+
+.table-card table { 
+    width:100%;
+    border-collapse:collapse; 
+}
+
+.table-card th,
+.table-card td { 
+    padding:.75rem;
+    text-align:left; 
+}
+
+.table-card thead th { 
+    background:#001219;
+    color:var(--accent-color); 
+}
+
+.table-card tbody tr:hover { 
+    background: rgba(0,229,255,0.1);
+}
+
+.chart-card { 
+    @include glass;
+    text-align:center;
+    margin-bottom:2rem; 
+}
+
+.chart-card img { 
+    max-width:100%;
+    border-radius:6px;
+    animation:fadeInUp .8s ease; 
+}
+
+footer { 
+    text-align:center;
+    padding:1rem;
+    color:var(--text-color);
+    opacity:.7;
+    font-size:.8rem;
+    animation:fadeInUp .5s ease; 
 }
