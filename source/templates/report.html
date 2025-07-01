@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="pt-PT">
 <head>
-  <meta charset="utf-8">
-  <title>GG | Relatório Mensal</title>
+    <meta charset="utf-8">
+    <title>GG | Relatório Mensal</title>
 </head>
 <body>
-  <h1>Relatório Mensal</h1>
-  {% if chart_data %}
-    <img src="data:image/png;base64,{{ chart_data }}" alt="Receitas vs Despesas" />
-  {% else %}
+    <h1>Relatório Mensal</h1>
+    {% if chart_data %}
+    <img src="data:image/png;base64,{{ chart_data }}" alt="Gráfico mensal">
+    {% else %}
     <p>Ainda não há transações para gerar relatório.</p>
-  {% endif %}
-  <p><a href="{{ url_for('dashboard.index') }}">&larr; Voltar</a></p>
+    {% endif %}
+    <p>
+        <a href="{{ url_for('dashboard.index') }}">← Voltar</a>
+    </p>
 </body>
 </html>
