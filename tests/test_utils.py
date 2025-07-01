@@ -1,14 +1,15 @@
-import pytest 
-from db import engine, Session
-from models import Base, Transaction
-from utils import add_transaction, get_transactions, update_transaction, delete_transaction
+import pytest
+from src.db import engine, Session
+from src.models import Base, Transaction
+from src.utils import add_transaction, get_transactions, update_transaction, delete_transaction
 from datetime import date
 
-@ pytest.fixture(scope='module')
+@pytest.fixture(scope='module')
 def setup_db():
     Base.metadata.create_all(engine)
     yield
     Base.metadata.drop_all(engine)
+
 
 def test_add_and_get(setup_db):
     session = Session()
@@ -17,6 +18,7 @@ def test_add_and_get(setup_db):
     assert len(fetched) == 1
     assert fetched[0].id == txn.id
 
+
 def test_update_and_delete(setup_db):
     session = Session()
     txn = add_transaction(session, date.today(), 'expense', 'Teste2', 50.0)
@@ -24,4 +26,3 @@ def test_update_and_delete(setup_db):
     assert updated.amount == 75.0
     assert delete_transaction(session, txn.id) is True
     assert delete_transaction(session, 9999) is False
-
