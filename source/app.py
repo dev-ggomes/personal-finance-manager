@@ -1,6 +1,6 @@
 from flask import Flask
-from src.db import engine
-from src.models import Base
+from source.db import engine
+from source.models import Base
 
 # Inicializa o app Flask
 def create_app():
@@ -10,7 +10,7 @@ def create_app():
     Base.metadata.create_all(engine)
 
     # Regista blueprints
-    from src.views.dashboard import bp as dashboard_bp
+    from source.views.dashboard import bp as dashboard_bp
     app.register_blueprint(dashboard_bp)
 
     return app

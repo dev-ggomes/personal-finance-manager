@@ -3,9 +3,9 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import pytest
-from src.db import engine, Session
-from src.models import Base, Transaction
-from src.utils import add_transaction, get_transactions, update_transaction, delete_transaction
+from source.db import engine, Session
+from source.models import Base, Transaction
+from source.utils import add_transaction, get_transactions, update_transaction, delete_transaction
 from datetime import date
 
 @pytest.fixture(scope='module')

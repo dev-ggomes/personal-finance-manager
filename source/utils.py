@@ -1,6 +1,6 @@
 from datetime import date as DateClass
 from sqlalchemy.orm import Session as SessionType
-from src.models import Transaction
+from source.models import Transaction
 
 
 def add_transaction(session: SessionType, date: DateClass, txn_type: str, category: str, amount: float, description: str = None) -> Transaction:
