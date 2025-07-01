@@ -1,5 +1,6 @@
 import os
 import sys
+# Adiciona a raiz do projeto ao PYTHONPATH para reconhecer o pacote source
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import pytest
