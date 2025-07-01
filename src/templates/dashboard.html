@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GG | Dashboard Financeiro</title>
+</head>
+<body>
+    <h1>As minhas transações</h1>
+    <form method="post">
+        <input type="date" name="date" required />
+        <select name="type">
+            <option value="income">Receita</option>
+            <option value="expense">Despesa</option>
+        </select>
+        <input type="text" name="category" placeholder="Categoria" required />
+        <input type="number" step="0.01" name="amount" placeholder="Valor" required />
+        <input type="text" name="description" placeholder="Descrição" required />
+        <button type="submit">Adicionar</button>
+    </form>
+    <ul>
+        {% for txn in transactions %}
+            <li>{{ txn.date }} - {{ txn.category }} - {{ txn.type }} - {{ txn.amount }}€ - {{ txn.description }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
