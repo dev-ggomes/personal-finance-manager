@@ -1,11 +1,12 @@
 :root {
-  --bg-color: #f5f7fa;
-  --card-bg: #ffffff;
-  --primary: #a8dadc;
-  --secondary: #457b9d;
-  --accent: #f4a261;
-  --text-color: #333333;
-  --shadow-color: rgba(0, 0, 0, 0.05); }
+  --bg-color: #2e2e2e;
+  --card-bg: #3a3a3a;
+  --primary: #e259ff;
+  /* Lilac accent */
+  --secondary: #6f42c1;
+  /* Deep purple */
+  --text-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.6); }
 
 * {
   box-sizing: border-box;
@@ -27,37 +28,38 @@ body {
 header {
   background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 8px var(--shadow-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
   padding: 1.5rem;
   transition: box-shadow 0.3s, transform 0.3s;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--primary);
-  color: #fff; }
+  background: var(--card-bg); }
   header:hover {
-    box-shadow: 0 8px 16px var(--shadow-color);
+    box-shadow: 0 8px 24px var(--shadow-color);
     transform: translateY(-4px); }
 
 header .logo {
   font-size: 1.8rem;
-  font-weight: bold; }
+  font-weight: bold;
+  color: var(--primary); }
 
 header nav a {
   margin-left: 1rem;
-  color: #fff;
+  color: var(--text-color);
   text-decoration: none;
   padding: 0.5rem;
   border-radius: 6px;
-  transition: background 0.3s; }
+  transition: background 0.3s, color 0.3s; }
 
 header nav a:hover {
-  background: var(--secondary); }
+  background: var(--primary);
+  color: #000; }
 
 .transaction-form {
   background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 8px var(--shadow-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
   padding: 1.5rem;
   transition: box-shadow 0.3s, transform 0.3s;
   display: grid;
@@ -65,7 +67,7 @@ header nav a:hover {
   gap: 1rem;
   margin: 2rem 0; }
   .transaction-form:hover {
-    box-shadow: 0 8px 16px var(--shadow-color);
+    box-shadow: 0 8px 24px var(--shadow-color);
     transform: translateY(-4px); }
 
 .transaction-form input,
@@ -74,32 +76,34 @@ header nav a:hover {
   padding: 0.75rem;
   border: 1px solid var(--shadow-color);
   border-radius: 6px;
-  font-size: 1rem; }
+  font-size: 1rem;
+  background: transparent;
+  color: var(--text-color); }
 
 .transaction-form input:focus,
 .transaction-form select:focus {
   outline: none;
-  border-color: var(--secondary); }
+  border-color: var(--primary); }
 
 .transaction-form button {
-  background: var(--accent);
-  color: #fff;
+  background: var(--primary);
+  color: #000;
   border: none;
   cursor: pointer;
   transition: filter 0.3s; }
 
 .transaction-form button:hover {
-  filter: brightness(1.1); }
+  filter: brightness(1.2); }
 
 .table-card {
   background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 8px var(--shadow-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
   padding: 1.5rem;
   transition: box-shadow 0.3s, transform 0.3s;
   overflow-x: auto; }
   .table-card:hover {
-    box-shadow: 0 8px 16px var(--shadow-color);
+    box-shadow: 0 8px 24px var(--shadow-color);
     transform: translateY(-4px); }
 
 .table-card table {
@@ -118,18 +122,18 @@ header nav a:hover {
 
 .table-card tbody tr:hover {
   background: var(--primary);
-  color: #fff; }
+  color: #000; }
 
 .chart-card {
   background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 8px var(--shadow-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
   padding: 1.5rem;
   transition: box-shadow 0.3s, transform 0.3s;
   text-align: center;
   margin: 2rem 0; }
   .chart-card:hover {
-    box-shadow: 0 8px 16px var(--shadow-color);
+    box-shadow: 0 8px 24px var(--shadow-color);
     transform: translateY(-4px); }
 
 .chart-card img {
